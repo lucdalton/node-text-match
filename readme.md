@@ -4,7 +4,7 @@ Query a string by creating a query object, instead of having to contruct a regex
 
 Complex queries can be contructed by nesting query objects.
 
-The type options are:
+The query type options are:
 ```javascript
 ['AND', 'OR', 'NOT', 'WITHIN', 'MATCH', 'EXACT']
 ```
