@@ -1,12 +1,38 @@
 #Node Module defining a simple query language for string matching.
 
-Query a string by creating a query object, instead of having to contruct a regex or parse a query string.  Complex queries can be contructed by nesting query objects.
+Query a string by creating a query object, instead of having to contruct a regex or parse anything.
+
+Complex queries can be contructed by nesting query objects.
 
 The type options are:
 ```javascript
 ['AND', 'OR', 'NOT', 'WITHIN', 'MATCH', 'EXACT']
 ```
 
+And some examples of query objects:
+```javascript
+
+// Match a string if it contains 'FILM' (only in uppercase!)
+var query1 = {
+	type:"EXACT",
+	arg1:"FILM"
+};
+
+
+
+// This query matches a string if it contains both 'FILM' (uppercase) and 'amazing' (any case)
+var query2 = {
+	type:"AND",
+	arg1:{
+		type:"EXACT",
+		arg1:"FILM"
+	},
+	arg2:{
+		type:"MATCH",
+		arg1:"amazing"
+	}
+}
+```
 
 
 
