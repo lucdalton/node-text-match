@@ -32,7 +32,22 @@ AND, OR AND WITHIN are binary operators and are of the following form:
 {
 	type:"AND",
 	arg1:{
-
+		//another query object
+	},
+	arg2:{
+		//another query object
 	}
 }
 ```
+
+EXACT and MATCH are uniary operators:
+
+```javascript
+{
+	type:"MATCH",
+	arg1:"amazing!!"
+}
+```
+
+
+These operations can be combined to perform complex queries against strings.
