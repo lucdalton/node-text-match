@@ -33,11 +33,11 @@ var query2 = {
 
 var query4 = {
 	type:"NOT",
-	arg1:"film"
+	arg1:"bad"
 }
 
 
-// Complex queries can be made by nesting query objects
+// More complex queries can be made by nesting query objects
 var query5 = {
 	type:"OR",
 	arg1:query2,
@@ -45,9 +45,9 @@ var query5 = {
 }
 ```
 
+---------------------
 
-
-###Basic example Usage:
+###Usage:
 ```javascript
 
 var query = require('node-text-match');
