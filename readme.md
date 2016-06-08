@@ -69,7 +69,7 @@ query.parseQuery(testString, exampleQuery);
 
 
 
-AND, OR are binary operators and are of the following form:
+AND & OR are binary operators and are of the following form:
 
 ```javascript
 {
