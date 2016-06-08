@@ -2,23 +2,19 @@
 
 Query a string by creating a query object, instead of having to contruct a regex or parse anything.
 
-Complex queries can be contructed by nesting query objects.
-
-The query type options are:
+The every query obejct has a type option, one of:
 ```javascript
 ['AND', 'OR', 'NOT', 'WITHIN', 'MATCH', 'EXACT']
 ```
 
 And some examples of query objects:
 ```javascript
-
+// As well as a type field, a query object will contain either 1 or to 'arg' fields, and no other fields.
 // Match a string if it contains 'FILM' (only in uppercase!)
 var query1 = {
 	type:"EXACT",
 	arg1:"FILM"
 };
-
-
 
 // This query matches a string if it contains both 'FILM' (uppercase) and 'amazing' (any case)
 var query2 = {
@@ -31,6 +27,20 @@ var query2 = {
 		type:"MATCH",
 		arg1:"amazing"
 	}
+}
+
+
+var query4 = {
+	type:"NOT",
+	arg1:""
+}
+
+
+// Complex queries can be made by nesting query objects
+var query4 = {
+	type:"OR",
+	arg1:query2,
+	arg2:
 }
 ```
 
