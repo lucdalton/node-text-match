@@ -9,7 +9,7 @@
   "scripts": {
     "test": "mocha test"
   },
-  "author": "",
+  "author": "Luc Dalton <lucdalton@gmail.com> (http://ltdalton.com)",
   "license": "ISC",
   "dependencies": {
     "chai": "^3.5.0",
