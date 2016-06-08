@@ -28,9 +28,11 @@ query.parseQuery(testString, exampleQuery);
 
 AND, OR AND WITHIN are binary operators and are of the following form:
 
+```javascript
 {
 	type:"AND",
 	arg1:{
 
 	}
 }
+```
