@@ -1,6 +1,6 @@
 #Node Module defining a simple query language for matching strings.
 
-##Example Usage:
+###Example Usage:
 ```javascript
 
 var query = require('node-text-match');
