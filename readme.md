@@ -2,7 +2,7 @@
 
 Query a string by creating a query object, instead of having to contruct a regex or parse anything.
 
-Every query obejct has a 'type' field, one of:
+Every query object has a 'type' field, one of:
 ```javascript
 ['AND', 'OR', 'NOT', 'WITHIN', 'MATCH', 'EXACT']
 ```
