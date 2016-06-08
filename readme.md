@@ -9,7 +9,7 @@ Every query object has a 'type' field, one of:
 
 As well as a type field, a query object will contain either 1 or to 'arg' fields, and no other fields.
 
-And some examples of query objects:
+Some examples of query objects:
 ```javascript
 // Match a string if it contains 'FILM' (only in uppercase!)
 var query1 = {
