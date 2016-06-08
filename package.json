@@ -1,5 +1,5 @@
 {
-  "name": "node-text-match-2",
+  "name": "node-text-match",
   "version": "1.0.0",
   "description": "Simple query language for javascript strings",
   "main": "index.js",
