@@ -2,7 +2,6 @@
 
 ##Overview
 
-
 Query a string by creating a query object, instead of having to contruct a regex or parse anything.
 
 Every query object has a 'type' field, one of:
@@ -70,7 +69,7 @@ query.parseQuery(testString, exampleQuery);
 
 
 
-AND, OR AND WITHIN are binary operators and are of the following form:
+AND, OR are binary operators and are of the following form:
 
 ```javascript
 {
@@ -81,17 +80,44 @@ AND, OR AND WITHIN are binary operators and are of the following form:
 	arg2:{
 		//another query object
 	}
-}
+};
+
+{
+	type:"OR",
+	arg1:{
+		//another query object
+	},
+	arg2:{
+		//another query object
+	}
+};
+
+```
+
+WITHIN is also a binary operator, but requires an extra parameter:
+```javascript
+
+// matches strings containing the word 'film' within 3 words of 'good'
+{
+	type:"WITHIN",
+	arg1:"film",
+	arg2:"good",
+	within:3
+};
 ```
 
 EXACT and MATCH are uniary operators:
 
 ```javascript
+// loose match
 {
 	type:"MATCH",
 	arg1:"amazing!!"
 }
+
+// exact match
+{
+	type:"EXACT",
+	arg1:"AMAzing"
+}
 ```
-
-
-These operations can be combined to perform complex queries against strings.
