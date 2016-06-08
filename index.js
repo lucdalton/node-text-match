@@ -102,6 +102,8 @@ function notMatch(text, word){
 
 function parseQuery(text, query){
 
+	checkQuery(query);
+
 	if(query.type == "WITHIN"){
 		within(text, query);
 	};
