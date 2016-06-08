@@ -1,5 +1,8 @@
 #Node Module defining a simple query language for string matching.
 
+##Overview
+
+
 Query a string by creating a query object, instead of having to contruct a regex or parse anything.
 
 Every query object has a 'type' field, one of:
