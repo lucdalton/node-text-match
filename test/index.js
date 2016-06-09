@@ -226,12 +226,8 @@ describe('integration tests', function(){
 
 
 
-	})
+	});
 
-
-	describe('execption tests', function(){
-
-	})
 
 
 
