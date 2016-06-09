@@ -2,6 +2,8 @@
 
 ##Overview
 
+[![Build Status](https://travis-ci.org/lucdalton/node-text-match.svg?branch=master)](https://travis-ci.org/lucdalton/node-text-match)
+
 Query a string by creating a query object, instead of having to contruct a regex or parse anything.
 
 Every query object has a 'type' field, one of:
