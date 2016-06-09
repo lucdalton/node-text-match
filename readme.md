@@ -1,8 +1,8 @@
-#Node Module defining a simple query language for string matching.
-
-##Overview
+#Simple string query language Node.js module
 
 [![Build Status](https://travis-ci.org/lucdalton/node-text-match.svg?branch=master)](https://travis-ci.org/lucdalton/node-text-match)
+
+##Overview
 
 Query a string by creating a query object, instead of having to contruct a regex or parse anything.
 
