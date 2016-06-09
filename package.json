@@ -1,6 +1,6 @@
 {
   "name": "node-text-match",
-  "version": "1.5.0",
+  "version": "1.6.0-0",
   "description": "Simple query language for javascript strings",
   "main": "index.js",
   "directories": {
