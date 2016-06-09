@@ -1,6 +1,7 @@
 #Simple string query language Node.js module
 
 [![Build Status](https://travis-ci.org/lucdalton/node-text-match.svg?branch=master)](https://travis-ci.org/lucdalton/node-text-match)
+[![Coverage Status](https://coveralls.io/repos/github/lucdalton/node-text-match/badge.svg?branch=master)](https://coveralls.io/github/lucdalton/node-text-match?branch=master)
 
 ##Overview
 
