@@ -38,9 +38,13 @@ var withinExample2 = {
 	arg1:"compare",
 	arg2:"market",
 	within: 1
-}
+};
 
+var exactExample = {
+	type:"EXACT",
+	arg1:"CoMparE"
 
+};
 
 
 describe('within query function', function(){
@@ -76,16 +80,8 @@ describe('within query function', function(){
 		var testText = "the was compare a market";
 		assert.equal(false, parser.within(testText, withinExample2));
 	});	
-
-
 });
 
-
-var exactExample = {
-	type:"EXACT",
-	arg1:"CoMparE"
-
-}
 
 describe('exact query function', function(){
 
@@ -122,9 +118,7 @@ describe('match function', function(){
 		var testText = "thewascomparemarket";
 		assert.equal(true, parser.looseMatch(testText, exactExample.arg1));
 	})
-
-
-})
+});
 
 describe('notMatch function', function(){
 	
@@ -137,11 +131,16 @@ describe('notMatch function', function(){
 		var testText = "the was market";
 		assert.equal(true, parser.notMatch(testText, exactExample.arg1));
 	})
+});
+
+describe('checkQuery function', function(){
+
+});
 
 
-})
 
 
+// <!--  INTEGRATION TESTS -->
 describe('integration tests', function(){
 
 	describe('parse multiple query', function(){
