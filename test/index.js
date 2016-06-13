@@ -135,9 +135,95 @@ describe('notMatch function', function(){
 
 describe('checkQuery function', function(){
 
+
+	it('should return error', function(){
+		expect(function(){	
+			parser.checkQuery('alksjdbflakswdjf');
+		}).to.throw('query type error');		
+	});
+
+
+	it('shouldn\'t return an error', function(){
+		expect(function(){	
+			parser.checkQuery({type:"EXACT",arg1:"film" });
+		}).to.not.throw('query type error');		
+	});
+
+	it('should return an error', function(){
+		expect(function(){	
+			parser.checkQuery({type:"EXACTA",arg1:"film" });
+		}).to.throw('query type error');
+	});
+
+	it('should return an error', function(){
+		expect(function(){	
+			parser.checkQuery({type:"EXACT"});
+		}).to.throw('query type error');
+	});
+
+
+	it('should not return an error', function(){
+		expect(function(){	
+			parser.checkQuery({type:"AND", arg1:{type:"EXACT", arg1:"film"}, arg2:{type:"EXACT", arg1:"media"}});
+		}).to.not.throw('query type error');
+	});
+
+
+
+	it('should not return an error', function(){
+		expect(function(){	
+			parser.checkQuery({type:"OR", arg1:{type:"MATCH", arg1:"film"}, arg2:{type:"MATCH", arg1:"media"}});
+		}).to.not.throw('query type error');
+	});
+
+
+
+	it('should not return an error', function(){
+		expect(function(){	
+			parser.checkQuery({type:"WITHIN", arg1:"film", arg2:"media", within:2});
+		}).to.not.throw('query type error');
+	});
+
+
 });
 
+describe('withinCheck function', function(){
+	it('should not return error', function(){
+		
+		assert.equal(true, parser.withinCheck({type:"WITHIN", arg1:"film", arg2:"media", within:2}));
+		
+	});
 
+
+	it('should return error', function(){
+		expect(function(){	
+			parser.withinCheck({type:"WITHIN", arg1:"film", arg2:"media", within:"aasd"});
+		}).to.throw('query type error');
+	});
+
+
+	it('should return error', function(){
+		expect(function(){	
+			parser.withinCheck({type:"WITHI", arg1:"film", arg2:"media", within:10});
+		}).to.throw('query type error');
+	});
+
+
+	it('should return error', function(){
+		expect(function(){	
+			parser.withinCheck({arg1:"film", arg2:"media", within:"aasd"});
+		}).to.throw('query type error');
+	});
+
+	it('should return error', function(){
+		expect(function(){	
+			parser.withinCheck(1);
+		}).to.throw('query type error');
+	});
+
+
+
+})
 
 
 // <!--  INTEGRATION TESTS -->
@@ -147,8 +233,6 @@ describe('integration tests', function(){
 
 		var t1 = "Compare the market is SHIT";
 		var t2 = "compare the market is SHIT";
-
-
 
 		var q1 = {
 			type:"WITHIN",
@@ -222,8 +306,6 @@ describe('integration tests', function(){
 		it('MUTLI should be false', function(){
 			assert.equal(false, parser.parseQuery(t1, q7));
 		})
-
-
 
 	});
 

@@ -8,7 +8,7 @@ var typeOptions = ["AND", "OR", "WITHIN", "NOT", "EXACT", "MATCH"];
 var uniaryOptions = ["NOT", "EXACT", "MATCH"];
 
 Array.prototype.indexOf = function(value) {
-    for (var i = 0; i < this.length; i++) {
+    for(var i = 0; i < this.length; i++) {
       if (this[i] === value) {
         return i;
       }
@@ -17,9 +17,23 @@ Array.prototype.indexOf = function(value) {
     return -1;
 }
 
+function withinCheck(query){
+	if((query.type == "WITHIN") && (typeof query.arg1 == "string") && (typeof query.arg2 == "string") && (Number.isInteger(query.within))){
+		return true;
+	}
+		
+	throw new Error('query type error');
+	
+
+}
+
 function checkQuery(query){
 
-	if(query.type && query.arg1){
+	if((query.type == "WITHIN") && (withinCheck(query))){
+		return;
+	}
+
+	if(query.type && query.arg1 && !query.arg2){
 		if((uniaryOptions.indexOf(query.type) != -1) && (typeof query.arg1 == "string")){
 			return;
 		}
@@ -144,3 +158,5 @@ module.exports.within = within;
 module.exports.exact = exact;
 module.exports.looseMatch = looseMatch;
 module.exports.notMatch = notMatch;
+module.exports.checkQuery = checkQuery;
+module.exports.withinCheck = withinCheck;
