@@ -119,7 +119,7 @@ function parseQuery(text, query){
 	checkQuery(query);
 
 	if(query.type == "WITHIN"){
-		within(text, query);
+		return within(text, query);
 	};
 
 	if(query.arg2){

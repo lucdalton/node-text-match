@@ -277,7 +277,14 @@ describe('integration tests', function(){
 		var q7 = {
 			type:"NOT",
 			arg1:"market"
-		}
+		};
+
+		var q8 = {
+			type:"WITHIN",
+			arg1:"Compare",
+			arg2:"market",
+			within:2
+		};
 
 
 		it('parse test 1', function(){
@@ -295,16 +302,21 @@ describe('integration tests', function(){
 
 		it('AND should be true', function(){
 			assert.equal(true, parser.parseQuery(t1, q6));
-		})
+		});
 
 
 		it('AND should be true', function(){
 			assert.equal(true, parser.parseQuery(t1, q5));
-		})
+		});
 
 
 		it('MUTLI should be false', function(){
 			assert.equal(false, parser.parseQuery(t1, q7));
+		});
+
+
+		it('should return true', function(){
+			assert.equal(true, parser.parseQuery(t1, q8));
 		})
 
 	});
