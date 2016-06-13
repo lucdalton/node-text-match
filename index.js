@@ -18,7 +18,7 @@ Array.prototype.indexOf = function(value) {
 }
 
 function withinCheck(query){
-	if((query.type == "WITHIN") && (typeof query.arg1 == "string") && (typeof query.arg2 == "string") && (Number.isInteger(query.within))){
+	if((query.type == "WITHIN") && (typeof query.arg1 == "string") && (typeof query.arg2 == "string") && (typeof query.within == "number")){
 		return true;
 	}
 		
