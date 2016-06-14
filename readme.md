@@ -110,7 +110,7 @@ WITHIN is also a binary operator, but requires an extra parameter:
 };
 ```
 
-EXACT and MATCH are uniary operators:
+EXACT, MATCH and NOT are uniary operators:
 
 ```javascript
 // loose match
@@ -124,4 +124,14 @@ EXACT and MATCH are uniary operators:
 	type:"EXACT",
 	arg1:"AMAzing"
 }
+
+// ignore strings that return true for arg1 query
+{
+	type:"NOT",
+	arg1:{
+		type:"EXACT",
+		arg1:"film"
+	}
+}
+
 ```
