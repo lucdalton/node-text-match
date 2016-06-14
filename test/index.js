@@ -287,6 +287,11 @@ describe('integration tests', function(){
 		};
 
 
+		var q10 = {
+			type:"MATCH",
+			arg1:"shit"
+		};
+
 		it('parse test 1', function(){
 			assert.equal(true, parser.parseQuery(t1, q2));
 		});
@@ -317,7 +322,17 @@ describe('integration tests', function(){
 
 		it('should return true', function(){
 			assert.equal(true, parser.parseQuery(t1, q8));
-		})
+		});
+		
+		it('should return true', function(){
+			var q = {
+				type:"AND",
+				arg1: q8,
+				arg2: q10
+			};
+			assert.equal(true, parser.parseQuery(t1, q));
+		});
+
 
 	});
 

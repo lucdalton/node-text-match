@@ -37,12 +37,6 @@ var query2 = {
 }
 
 
-var query4 = {
-	type:"NOT",
-	arg1:"bad"
-}
-
-
 // More complex queries can be made by nesting query objects
 var query5 = {
 	type:"OR",
