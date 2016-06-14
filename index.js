@@ -8,6 +8,7 @@ var typeOptions = ["AND", "OR", "WITHIN", "NOT", "EXACT", "MATCH"];
 var uniaryOptions = ["NOT", "EXACT", "MATCH"];
 
 Array.prototype.indexOf = function(value) {
+
     for(var i = 0; i < this.length; i++) {
       if (this[i] === value) {
         return i;
@@ -18,13 +19,13 @@ Array.prototype.indexOf = function(value) {
 }
 
 function withinCheck(query){
+
 	if((query.type == "WITHIN") && (typeof query.arg1 == "string") && (typeof query.arg2 == "string") && (typeof query.within == "number")){
 		return true;
 	}
 		
 	throw new Error('query type error');
 	
-
 }
 
 function checkQuery(query){
@@ -38,7 +39,6 @@ function checkQuery(query){
 			return;
 		}
 	}
-
 	
 	if(typeof query !== "object"){
 		throw new Error('query type error');
@@ -89,6 +89,7 @@ function within(text, query){
 			}
 		}
 	}
+	
 	return false;
 }
 
@@ -104,15 +105,6 @@ function looseMatch(text, word){
 	return re.test(text.toLowerCase());
 
 }
-
-function notMatch(text, word){
-	// returns true or false depending on if it does not match
-	var re = new RegExp(word.toLowerCase());
-	return !re.test(text.toLowerCase());
-}
-
-
-
 
 function parseQuery(text, query){
 
@@ -145,18 +137,14 @@ function parseQuery(text, query){
 	};
 
 	if(query.type == "NOT"){
-		return notMatch(text, query.arg1);
+		return !parseQuery(text, query.arg1);
 	}
 
 }
-
-
-
 
 module.exports.parseQuery = parseQuery;
 module.exports.within = within;
 module.exports.exact = exact;
 module.exports.looseMatch = looseMatch;
-module.exports.notMatch = notMatch;
 module.exports.checkQuery = checkQuery;
 module.exports.withinCheck = withinCheck;

@@ -120,19 +120,6 @@ describe('match function', function(){
 	})
 });
 
-describe('notMatch function', function(){
-	
-	it('should return false', function(){
-		var testText = "the was compare market";
-		assert.equal(false, parser.notMatch(testText, exactExample.arg1));
-	})
-
-	it('should return true', function(){
-		var testText = "the was market";
-		assert.equal(true, parser.notMatch(testText, exactExample.arg1));
-	})
-});
-
 describe('checkQuery function', function(){
 
 
@@ -276,7 +263,7 @@ describe('integration tests', function(){
 
 		var q7 = {
 			type:"NOT",
-			arg1:"market"
+			arg1:q2
 		};
 
 		var q8 = {
@@ -291,6 +278,11 @@ describe('integration tests', function(){
 			type:"MATCH",
 			arg1:"shit"
 		};
+
+		var q11 = {
+			type:"NOT",
+			arg1:q10
+		}
 
 		it('parse test 1', function(){
 			assert.equal(true, parser.parseQuery(t1, q2));
@@ -332,6 +324,11 @@ describe('integration tests', function(){
 			};
 			assert.equal(true, parser.parseQuery(t1, q));
 		});
+
+
+		it('NOT operator should just work on objects', function(){
+			console.log(parser.parseQuery(t1, q11));
+		})
 
 
 	});
