@@ -37,10 +37,9 @@ var query2 = {
 }
 
 // This query matches if the string does not contain both 'FILM' (uppercase) and 'amazing' (any case)
-
 var query3 = {
 	type:"NOT",
-	query2
+	arg1:query2
 }
 
 
