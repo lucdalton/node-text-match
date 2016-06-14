@@ -17,13 +17,13 @@ As well as a type field, a query object will contain either 1 or 2 'arg' fields.
 
 Some examples of query objects:
 ```javascript
-// Match a string if it contains 'FILM' (only in uppercase!)
+// Match a string if it contains the word 'film'
 var query1 = {
-	type:"EXACT",
-	arg1:"FILM"
+	type:"MATCH",
+	arg1:"film"
 };
 
-// This query matches a string if it contains both 'FILM' (uppercase) and 'amazing' (any case)
+// This query matches a string if it contains both 'FILM' (only in uppercase) and 'amazing' (any case)
 var query2 = {
 	type:"AND",
 	arg1:{
@@ -37,17 +37,17 @@ var query2 = {
 }
 
 // This query matches if the string does not contain both 'FILM' (uppercase) and 'amazing' (any case)
-var query3 = {
+var query4 = {
 	type:"NOT",
 	arg1:query2
 }
 
 
-// More complex queries can be made by nesting query objects
-var query4 = {
+// More complex queries can then be made by nesting query objects
+var query5 = {
 	type:"OR",
-	arg1:query2,
-	arg2:query4
+	arg1:query1,
+	arg2:query2
 }
 ```
 
