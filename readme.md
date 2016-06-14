@@ -36,9 +36,16 @@ var query2 = {
 	}
 }
 
+// This query matches if the string does not contain both 'FILM' (uppercase) and 'amazing' (any case)
+
+var query3 = {
+	type:"NOT",
+	query2
+}
+
 
 // More complex queries can be made by nesting query objects
-var query5 = {
+var query4 = {
 	type:"OR",
 	arg1:query2,
 	arg2:query4
