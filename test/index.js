@@ -289,7 +289,7 @@ describe('withinCheck function', function(){
 
 
 
-})
+});
 
 
 describe('catStrings test', function(){
