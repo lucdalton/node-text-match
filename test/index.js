@@ -46,6 +46,85 @@ var exactExample = {
 
 };
 
+var exampleString1 = "hello";
+var exampleString2 = "world";
+var exampleString3 = "this,sucks";
+
+var t1 = "Compare the market is SHIT";
+var t2 = "compare the market is SHIT";
+
+var q1 = {
+	type:"WITHIN",
+	arg1:"compare",
+	arg2:"market",
+	within:3
+};
+
+var q2 = {
+	type:"EXACT",
+	arg1:"Compare",
+};
+
+var q3 = {
+	type:"MATCH",
+	arg1:"COMPARE"
+};
+
+var q4 = {
+	type:"MATCH",
+	arg1: "market"
+};
+
+var q5 = {
+	type:"AND",
+	arg1:q2,
+	arg2:q4
+};
+
+var q6 = {
+	type:"AND",
+	arg1:{
+		type:"MATCH",
+		arg1:"compare"
+	},
+	arg2:{
+		type:"MATCH",
+		arg1:"MARKET"
+	}
+};
+
+var q7 = {
+	type:"NOT",
+	arg1:q2
+};
+
+var q8 = {
+	type:"WITHIN",
+	arg1:"Compare",
+	arg2:"market",
+	within:2
+};
+
+
+var q10 = {
+	type:"MATCH",
+	arg1:"shit"
+};
+
+var q11 = {
+	type:"NOT",
+	arg1:q10
+}
+
+var q12 = {
+	type: "OR",
+	arg1:q5,
+	arg2:{
+		type:"EXACT",
+		arg1:"GARBAGE"
+	}
+}
+
 
 describe('within query function', function(){
 	
@@ -213,76 +292,45 @@ describe('withinCheck function', function(){
 })
 
 
+describe('catStrings test', function(){
+	it('should return true', function(){
+		assert.equal('hello,world', parser.catStrings(exampleString1, exampleString2));
+	});
+
+
+	it('should return false', function(){
+		assert.equal('hello,world,this,sucks', parser.catStrings(parser.catStrings(exampleString1, exampleString2), exampleString3));
+	});
+
+});
+
+describe('queryTostring function', function(){
+	it('within test 1', function(){
+		assert.equal('compare,market', parser.queryToString(withinExample1));
+	});
+
+	it('exact test 2', function(){
+		assert.equal('CoMparE', parser.queryToString(exactExample));
+	});
+
+	it('nested query test', function(){
+		assert.equal('Compare,market', parser.queryToString(q5));
+	});
+
+	it('nested query test 2', function(){
+		assert.equal('Compare,market,GARBAGE', parser.queryToString(q12));
+	});
+
+
+
+})
+
 // <!--  INTEGRATION TESTS -->
 describe('integration tests', function(){
 
 	describe('parse multiple query', function(){
 
-		var t1 = "Compare the market is SHIT";
-		var t2 = "compare the market is SHIT";
 
-		var q1 = {
-			type:"WITHIN",
-			arg1:"compare",
-			arg2:"market",
-			within:3
-		};
-
-		var q2 = {
-			type:"EXACT",
-			arg1:"Compare",
-		};
-
-		var q3 = {
-			type:"MATCH",
-			arg1:"COMPARE"
-		};
-
-		var q4 = {
-			type:"MATCH",
-			arg1: "market"
-		};
-
-		var q5 = {
-			type:"AND",
-			arg1:q2,
-			arg2:q4
-		};
-
-		var q6 = {
-			type:"AND",
-			arg1:{
-				type:"MATCH",
-				arg1:"compare"
-			},
-			arg2:{
-				type:"MATCH",
-				arg1:"MARKET"
-			}
-		};
-
-		var q7 = {
-			type:"NOT",
-			arg1:q2
-		};
-
-		var q8 = {
-			type:"WITHIN",
-			arg1:"Compare",
-			arg2:"market",
-			within:2
-		};
-
-
-		var q10 = {
-			type:"MATCH",
-			arg1:"shit"
-		};
-
-		var q11 = {
-			type:"NOT",
-			arg1:q10
-		}
 
 		it('parse test 1', function(){
 			assert.equal(true, parser.parseQuery(t1, q2));

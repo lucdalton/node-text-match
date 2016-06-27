@@ -89,7 +89,7 @@ function within(text, query){
 			}
 		}
 	}
-	
+
 	return false;
 }
 
@@ -142,9 +142,47 @@ function parseQuery(text, query){
 
 }
 
+function catStrings(text1, text2){
+	return text1 + ',' + text2;
+}
+
+// returns an array of terms
+function queryToString(query){
+	checkQuery(query);
+	if(query.type == "WITHIN"){
+		return catStrings(query.arg1, query.arg2);
+	};
+
+	if(query.arg2){
+
+		// it is a binary operator
+		if(query.type == "AND"){
+			return catStrings(queryToString(query.arg1), queryToString(query.arg2));
+		};
+
+		if(query.type == "OR"){
+			return catStrings(queryToString(query.arg1), queryToString(query.arg2));
+		};
+
+	}
+		
+	// else it is a uniary operator
+	if(query.type == "EXACT"){
+		return query.arg1;
+	};
+
+	if(query.type == "MATCH"){
+		return query.arg1;
+	};
+
+
+}
+
 module.exports.parseQuery = parseQuery;
 module.exports.within = within;
 module.exports.exact = exact;
 module.exports.looseMatch = looseMatch;
 module.exports.checkQuery = checkQuery;
 module.exports.withinCheck = withinCheck;
+module.exports.catStrings = catStrings;
+module.exports.queryToString = queryToString;
